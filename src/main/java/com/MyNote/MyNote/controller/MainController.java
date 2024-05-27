@@ -2,6 +2,7 @@ package com.MyNote.MyNote.controller;
 
 import com.MyNote.MyNote.model.entity.Note;
 import com.MyNote.MyNote.model.repository.NoteRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -12,11 +13,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Controller
 public class MainController {
-    @Autowired
-    private NoteRepository noteRepository;
 
+    private final NoteRepository noteRepository;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -65,7 +66,7 @@ public class MainController {
     @GetMapping("/delete/{id}")
     public String deleteNote(@PathVariable Long id, @ModelAttribute Note note){
         Optional<Note> targetNote = noteRepository.findById(id);
-        targetNote.ifPresent(value -> noteRepository.delete(value));
+        targetNote.ifPresent(noteRepository::delete);
         return "redirect:/";
     }
 }
