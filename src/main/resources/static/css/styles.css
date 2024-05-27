@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+.notes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.note-card {
+    border: 2px solid #EF6C57;
+    border-radius: 8px;
+    padding: 10px;
+    width: 150px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.note-card:hover {
+    background-color: #FBEAE9;
+}
+
+.note-title {
+    font-weight: bold;
+    color: #EF6C57;
+}
+
+.note-date {
+    font-size: 12px;
+    color: #EF6C57;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.create-note {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #EF6C57;
+    cursor: pointer;
+}
+
+.header {
+    background-color: #7995D8;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 24px;
+    color: #EF6C57;
+    font-weight: bold;
+}
+
+.header-logo {
+    position: static;
+    top: 10px;
+    bottom: 20px;
+    color: #EF6C57;
+    cursor: pointer;
+}
+
+.user-name {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #EF6C57;
+}
+
+.delete-item {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+}

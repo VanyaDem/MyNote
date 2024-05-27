@@ -1,0 +1,43 @@
+<!-- src/main/resources/templates/index.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>MyNote</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script>
+        function handleNoteClick(noteId) {
+            window.location.href = '/edit/' + noteId
+        }
+
+        function handleDeleteClick(event, noteId) {
+            event.stopPropagation();
+            if (confirm("Ви впевнені, що хочете видалити цю нотатку?")) {
+                window.location.href = '/delete/' + noteId;
+            }
+        }
+    </script>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+<div class="container">
+    <div class="notes-grid">
+        <div th:each="note : ${notes}" class="note-card"
+             th:onclick="'handleNoteClick(' + ${note.id} + ')'">
+            <div class="note-title" th:text="${note.title}">Title</div>
+            <div class="note-date"
+                 th:text="${T(java.time.format.DateTimeFormatter).ofPattern('dd.MM.yyyy hh:mm').format(note.lastModified)}">
+            </div>
+            <span class="delete-item" th:onclick="'handleDeleteClick(event, ' + ${note.id} + ')'">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                    <path d="M22,4H17V2a2,2,0,0,0-2-2H9A2,2,0,0,0,7,2V4H2V6H4V21a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V6h2ZM9,2h6V4H9Zm9,19a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V6H18Z"
+                          fill="#EF6C57"/>
+                    <rect x="9" y="10" width="2" height="8" fill="#EF6C57"/>
+                    <rect x="13" y="10" width="2" height="8" fill="#EF6C57"/>
+                </svg>
+            </span>
+        </div>
+    </div>
+    <div class="create-note" onclick="window.location.href='/create'">Create new Note</div>
+</div>
+</body>
+</html>

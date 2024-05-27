@@ -1,0 +1,27 @@
+<!-- src/main/resources/templates/note-form.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Note Form</title>
+    <link rel="stylesheet" href="/css/noteform.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<!-- Вставка фрагмента заголовка -->
+<div th:replace="header :: header"></div>
+
+<!-- Окремий контейнер для форми -->
+<div class="form-page-container">
+    <div class="form-container">
+        <h2 th:text="${note.id == null} ? 'Create Note' : 'Edit Note'">Create Note</h2>
+        <form th:action="${note.id == null} ? '/create' : '/edit/' + ${note.id}" th:object="${note}" method="post">
+            <label for="title">Title</label>
+            <input type="text" id="title" th:field="*{title}" required>
+            <label for="content">Content</label>
+            <textarea id="content" th:field="*{content}" rows="5" required></textarea>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
