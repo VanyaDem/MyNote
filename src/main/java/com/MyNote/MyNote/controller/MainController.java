@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -20,14 +21,20 @@ public class MainController {
     private final NoteRepository noteRepository;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String welcome(Model model, Principal principal){
+        return "welcome";
+    }
+
+    @GetMapping("/main")
+    public String index(Model model, Principal principal) {
         List<Note> notes = noteRepository.findAll(Sort.by("lastModified").descending());
+        model.addAttribute("user", principal);
         model.addAttribute("notes", notes);
         return "index";
     }
 
     @GetMapping("/create")
-    public String createNoteForm(Model model) {
+    public String createNoteForm(Model model, Principal principal) {
         model.addAttribute("note", new Note());
         return "note-form";
     }
@@ -36,17 +43,17 @@ public class MainController {
     public String createNote(@ModelAttribute Note note) {
         note.setLastModified(LocalDateTime.now());
         noteRepository.save(note);
-        return "redirect:/";
+        return "redirect:/main";
     }
 
     @GetMapping("/edit/{id}")
-    public String editNoteForm(@PathVariable Long id, Model model) {
+    public String editNoteForm(@PathVariable Long id, Model model, Principal principal) {
         Optional<Note> note = noteRepository.findById(id);
         if (note.isPresent()) {
             model.addAttribute("note", note.get());
             return "note-form";
         } else {
-            return "redirect:/";
+            return "redirect:/main";
         }
     }
 
@@ -60,13 +67,13 @@ public class MainController {
             updatedNote.setLastModified(LocalDateTime.now());
             noteRepository.save(updatedNote);
         }
-        return "redirect:/";
+        return "redirect:/main";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteNote(@PathVariable Long id, @ModelAttribute Note note){
         Optional<Note> targetNote = noteRepository.findById(id);
         targetNote.ifPresent(noteRepository::delete);
-        return "redirect:/";
+        return "redirect:/main";
     }
 }
