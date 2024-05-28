@@ -31,5 +31,23 @@ body {
     position: absolute;
     top: 10px;
     right: 20px;
+}
+
+.logout-button form {
+    display: inline;
+}
+
+.logout-button button {
+    background: none;
+    border: none;
     color: #EF6C57;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: bolder;
+    padding: 0;
+    font-family: inherit;
+}
+
+.logout-button button:hover {
+    color: #d9534f;
 }
