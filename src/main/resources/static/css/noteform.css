@@ -53,16 +53,12 @@ body {
 }
 
 .error-message {
-    background-color: #f8d7da; /* Рожевий колір фону */
-    border: 1px solid #f5c6cb; /* Рожевий колір межі */
-    color: #721c24; /* Темно-червоний колір тексту */
-    padding: 10px 20px; /* Відступи всередині */
-    border-radius: 5px; /* Закруглені кути */
-    margin: 10px 0; /* Відступи зверху та знизу */
-    font-family: Arial, sans-serif; /* Шрифт */
-    font-size: 14px; /* Розмір шрифту */
-}
-
-.error-message strong {
-    font-weight: bold; /* Жирний текст */
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
 }
