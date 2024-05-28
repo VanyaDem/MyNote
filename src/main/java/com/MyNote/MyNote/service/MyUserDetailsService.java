@@ -16,12 +16,20 @@ public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     public MyUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
+        createInitialUser(userRepository);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
+        return userRepository
+                .findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
-        return user;
+    }
+
+    private void createInitialUser(UserRepository userRepository){
+        User user = new User();
+        user.setUsername("2");
+        user.setPassword("2");
+        userRepository.save(user);
     }
 }
