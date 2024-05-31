@@ -9,10 +9,12 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
+@Table(name = "notes")
 public class Note {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "note_id")
     private Long id;
 
     private String title;
@@ -21,6 +23,7 @@ public class Note {
 
     private LocalDateTime lastModified;
 
-    @ManyToOne
-    private User user;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private NoteUser noteUser;
 }
