@@ -1,6 +1,6 @@
 package com.MyNote.MyNote.service;
 
-import com.MyNote.MyNote.model.entity.User;
+import com.MyNote.MyNote.model.entity.NoteUser;
 import com.MyNote.MyNote.model.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,10 +26,11 @@ public class MyUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
     }
 
-    private void createInitialUser(UserRepository userRepository){
-        User user = new User();
-        user.setUsername("2");
-        user.setPassword("2");
-        userRepository.save(user);
+    private void createInitialUser(UserRepository userRepository) {
+        NoteUser noteUser = new NoteUser();
+        noteUser.setUsername("2");
+        noteUser.setPassword("$2a$10$6PiGUEiHZ5bQKihtmkMtQ.FMlzdEMqa8A./46h3aWLWju5P./vom6");
+        userRepository.save(noteUser);
     }
+
 }
