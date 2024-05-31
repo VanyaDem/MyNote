@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" lang="uk">
+<head>
+    <title>Spring Security Example </title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/noteform.css">
+</head>
+
+<body>
+<div th:replace="header :: header"></div>
+
+<div class="form-page-container">
+    <div class="form-container">
+        <form th:action="@{/user}" method="post">
+            <h2>Реєстрація</h2>
+            <div th:if="${param.error}" class="error-message">Парролі не співпадають</div>
+            <br>
+            <label>Ім'я користувача: <input type="text" name="username" required/> </label>
+            <label>Пароль: <input type="password" name="password" required/> </label>
+            <label>Підтвердіть пароль: <input type="password" name="confirmPassword" required/> </label>
+            <div class="button-container">
+                <button type="submit">Зареєструватись</button>
+                <span class="reg-button" onclick="window.location.href='/login'">Увійти</span>
+                <span>  </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
