@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="uk">
 <head>
     <title>MyNote</title>
     <link rel="stylesheet" href="/css/header.css">
@@ -7,10 +7,16 @@
 </head>
 <body>
 <div th:replace="header :: header"></div>
-<div class="container">
-    <h1>Hello please</h1>
-    <div>
-        <span onclick="window.location.href='/main'">Go to notes</span>
+<div class="gritting-container">
+    <div class="gritting-message-container">
+        <h1>Привіт!</h1>
+        <div>
+            Це простий веб-додаток для створення та зберігання нотаток.
+            <br>
+            Щоб почати користуватись нотатками, ви можете
+            <span class="link-button" onclick="window.location.href='/login'">увійти</span> або
+            <span class="link-button" onclick="window.location.href='/registration'">зреєструватися</span>.
+        </div>
     </div>
 </div>
 </body>
