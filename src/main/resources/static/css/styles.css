@@ -62,3 +62,38 @@ body {
     right: 10px;
     cursor: pointer;
 }
+.gritting-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.gritting-message-container {
+    background-color: #FFFFFF;
+    padding: 30px 60px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+.gritting-message-container h1 {
+    font-size: 36px;
+    color: #EF6C57;
+    margin-bottom: 20px;
+}
+
+.gritting-message-container div {
+    font-size: 25px;
+    color: #555555;
+}
+
+.link-button {
+    color: steelblue;
+    cursor: pointer;
+}
+
+.link-button:hover {
+    color: blue;
+}
