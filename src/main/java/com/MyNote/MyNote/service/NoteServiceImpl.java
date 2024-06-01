@@ -3,6 +3,7 @@ package com.MyNote.MyNote.service;
 import com.MyNote.MyNote.model.entity.Note;
 import com.MyNote.MyNote.model.repository.NoteRepository;
 import com.MyNote.MyNote.model.repository.UserRepository;
+import com.MyNote.MyNote.service.interfaces.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

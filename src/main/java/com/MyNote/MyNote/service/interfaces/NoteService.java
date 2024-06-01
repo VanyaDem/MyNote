@@ -1,4 +1,4 @@
-package com.MyNote.MyNote.service;
+package com.MyNote.MyNote.service.interfaces;
 
 import com.MyNote.MyNote.model.entity.Note;
 import org.springframework.stereotype.Service;

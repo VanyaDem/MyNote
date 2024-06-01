@@ -1,7 +1,7 @@
 package com.MyNote.MyNote.controller;
 
 import com.MyNote.MyNote.model.dto.UserRegistrationDTO;
-import com.MyNote.MyNote.service.UserService;
+import com.MyNote.MyNote.service.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

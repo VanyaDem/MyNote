@@ -1,8 +1,8 @@
 package com.MyNote.MyNote.controller;
 
 import com.MyNote.MyNote.model.entity.Note;
-import com.MyNote.MyNote.service.NoteService;
-import com.MyNote.MyNote.service.UserService;
+import com.MyNote.MyNote.service.interfaces.NoteService;
+import com.MyNote.MyNote.service.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

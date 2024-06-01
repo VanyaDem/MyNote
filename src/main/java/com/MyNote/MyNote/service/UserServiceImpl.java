@@ -5,6 +5,7 @@ import com.MyNote.MyNote.model.entity.Note;
 import com.MyNote.MyNote.model.entity.NoteUser;
 import com.MyNote.MyNote.model.repository.NoteRepository;
 import com.MyNote.MyNote.model.repository.UserRepository;
+import com.MyNote.MyNote.service.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;

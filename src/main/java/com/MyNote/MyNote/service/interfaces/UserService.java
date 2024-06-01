@@ -1,4 +1,4 @@
-package com.MyNote.MyNote.service;
+package com.MyNote.MyNote.service.interfaces;
 
 import com.MyNote.MyNote.model.dto.UserRegistrationDTO;
 import com.MyNote.MyNote.model.entity.Note;
