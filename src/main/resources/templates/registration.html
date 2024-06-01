@@ -13,7 +13,8 @@
     <div class="form-container">
         <form th:action="@{/user}" method="post">
             <h2>Реєстрація</h2>
-            <div th:if="${param.error}" class="error-message">Парролі не співпадають</div>
+            <div th:if="${param.passwordMismatch}" class="error-message">Парролі не співпадають</div>
+            <div th:if="${param.userAlreadyExist}" class="error-message">Такий користувач вже існує</div>
             <br>
             <label>Ім'я користувача: <input type="text" name="username" required/> </label>
             <label>Пароль: <input type="password" name="password" required/> </label>
