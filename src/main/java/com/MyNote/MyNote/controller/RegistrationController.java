@@ -1,11 +1,11 @@
 package com.MyNote.MyNote.controller;
 
-import com.MyNote.MyNote.model.entity.User;
-import com.MyNote.MyNote.model.repository.UserRepository;
+import com.MyNote.MyNote.model.dto.UserRegistrationDTO;
+import com.MyNote.MyNote.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Objects;
@@ -14,12 +14,31 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class RegistrationController {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
+
+    @GetMapping("/registration")
+    public String registration() {
+        return "registration";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 
     @PostMapping("/user")
-    private String addNewUser(Model model){
-        var user = (User)model.getAttribute("newUser");
-        userRepository.save(Objects.requireNonNull(user));
+    public String addNewUser(@ModelAttribute UserRegistrationDTO dto) {
+
+        if (!Objects.equals(dto.password(), dto.confirmPassword())) {
+            return "redirect:/registration?passwordMismatch=true";
+        }
+
+        try {
+            userService.addNewUser(dto);
+        } catch (Exception e) {
+            return "redirect:/registration?userAlreadyExist=true";
+        }
         return "redirect:/login";
     }
 }
+
