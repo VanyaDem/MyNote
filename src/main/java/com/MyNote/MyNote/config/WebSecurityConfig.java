@@ -17,6 +17,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 public class WebSecurityConfig {
 
+    private static final String[] PERMITTED_ROUTES = {"/", "/login", "/registration", "/user", "/css/*"};
+
     private final MyUserDetailsService myUserDetailsService;
 
     @Bean
@@ -25,7 +27,7 @@ public class WebSecurityConfig {
                 .userDetailsService(myUserDetailsService)
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/login", "/registration", "/user", "/css/*").permitAll()
+                        .requestMatchers(PERMITTED_ROUTES).permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
